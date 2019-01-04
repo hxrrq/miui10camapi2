@@ -42,7 +42,7 @@ LATESTARTSERVICE=false
 print_modname() {
   ui_print "****************************************"
   ui_print "This should enable Camera API2 on MIUI10"
-  ui_print "    Stock MIUI Camera won't work !!!   "
+  ui_print "  !!! Stock MIUI Camera won't work !!!  "
   ui_print "****************************************"
 }
 
