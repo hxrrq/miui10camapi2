@@ -99,3 +99,25 @@ set_permissions() {
 # difficult for you to migrate your modules to newer template versions.
 # Make update-binary as clean as possible, try to only do function calls in it.
 
+#Checking for supported device and firmware. Thx @Didgeridoohan for this function.
+device_fn() {
+# Variables
+DEVFND=0
+DEVICES="
+santoni_V10.1.1.0.NAMMIFI
+"
+# Device check
+for ITEM in $DEVICES; do
+  if [ $(getprop ro.product.name) == "$(echo $ITEM | cut -f 1 -d '_')" ] && [ $(getprop ro.build.version.incremental) == "$(echo $ITEM | cut -f 2 -d '_')" ] ; then
+    ui_print "- $(echo $ITEM | cut -f 1 -d '_') detected, MIUI $(echo $ITEM | cut -f 2 -d '_')."
+    mkdir -p $MODPATH/system
+    cp -afr $INSTALLER/common/$(echo $ITEM | cut -f 1 -d '_') $MODPATH/system/priv-app
+    DEVFND=1
+    break
+  fi
+done
+# Abort if no match
+if [ $DEVFND == 0 ]; then
+  abort "Unsupported device or modified build.prop"
+fi
+}
