@@ -104,14 +104,12 @@ device_fn() {
 # Variables
 DEVFND=0
 DEVICES="
-santoni`Android7.1.2_10
+santoni~Android7.1.2_10
 "
 # Device check
 for ITEM in $DEVICES; do
-  if [ $(getprop ro.product.name) == "$(echo $ITEM | cut -f 1 -d '`')" ] && [ $(getprop ro.miui.ui.version.name) == "$(echo $ITEM | cut -f 2 -d '`')" ] ; then
-    ui_print "- $(echo $ITEM | cut -f 1 -d '`') detected, MIUI $(echo $ITEM | cut -f 2 -d '`')."
-    mkdir -p $MODPATH/system
-    cp -afr $INSTALLER/common/$(echo $ITEM | cut -f 1 -d '_') $MODPATH/system/priv-app
+  if [ $(getprop ro.product.name) == "$(echo $ITEM | cut -f 1 -d '~')" ] && [ $(getprop ro.build.software.version) == "$(echo $ITEM | cut -f 2 -d '~')" ] ; then
+    ui_print "- $(echo $ITEM | cut -f 1 -d '~') detected, OS $(echo $ITEM | cut -f 2 -d '~')."
     DEVFND=1
     break
   fi
