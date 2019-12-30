@@ -122,10 +122,10 @@ REPLACE="
 # Set what you want to display when installing your module
 
 print_modname() {
-  ui_print "****************************************"
-  ui_print "This should enable Camera API2 on MIUI10"
-  ui_print "  !!! Stock MIUI Camera won't work !!!  "
-  ui_print "****************************************"
+  ui_print "******************************************"
+  ui_print "This should enable Camera API2 on MIUI 10/11"
+  ui_print "    !!! Stock MIUI Camera won't work !!!  "
+  ui_print "******************************************"
 }
 
 # Copy/extract your module files into $MODPATH in on_install.
